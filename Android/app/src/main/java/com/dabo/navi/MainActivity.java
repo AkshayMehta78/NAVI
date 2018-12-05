@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         } else {
             Log.e(TAG, "Did not found BT hardware");
-            Toast.makeText(this, "Did not found BT hardware", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Did not find BT hardware", Toast.LENGTH_SHORT).show();
         }
 
     }
