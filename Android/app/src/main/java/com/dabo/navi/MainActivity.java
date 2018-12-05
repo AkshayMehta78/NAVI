@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                 second_signal = !second_signal;
             } else if ((step_count >= (SIGNAL_DELTA)) && !first_signal) {
-                tv_log.setText("\nNEW-SIGNAL");
+                tv_log.setText(String.format("%s\nNEW-SIGNAL", tv_log.getText()));
                 random_signal();
 
                 first_signal = !first_signal;
@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void uiDeviceConnected(BluetoothGatt gatt, BluetoothDevice device) {
         Log.d(TAG, "Successfully connected with " + device.getName());
+        set_connected(true);
 
         bleWrapper.getSupportedServices();
     }
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void uiDeviceDisconnected(BluetoothGatt gatt, BluetoothDevice device) {
         Log.d(TAG, device.getName() + " disconnected");
+        set_connected(false);
     }
 
     @Override
@@ -243,5 +245,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             bleWrapper.writeDataToCharacteristic(characteristic, dataToWrite);
         }
+    }
+
+    private void set_connected(final boolean connected) {
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+
+                if (connected)  tv_log.setText("Connected..");
+                else  tv_log.setText("...");
+            }
+        });
     }
 }
