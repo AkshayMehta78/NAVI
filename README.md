@@ -14,4 +14,4 @@ The wearable consists of a ESP32, which controls a vibration emitter.
 
 ## Other
 
-Check the [wiki](https://github.com/AkshayMehta78/NAVI/wiki) for more information.
+This project was build as part of the lecture Mobile Innovations for Global Challenges by Dr. Christelle Scharff. Check the [wiki](https://github.com/AkshayMehta78/NAVI/wiki) for more information.
